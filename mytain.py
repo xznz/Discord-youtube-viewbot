@@ -47,7 +47,7 @@ bots_channel = id
 
 @bot.event
 async def on_ready():
-  await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='ICE TOOLS| Prefix y!'))
+  await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name='Ayu x Youtube'))
 
 
 @bot.command()
@@ -59,7 +59,7 @@ async def ytsearch(ctx, keyword):
     r = api.search_by_keywords(q=keyword, search_type=["channel","video", "playlist"], count=5, limit=5)
     b  = r.items[0].to_dict()['id']['videoId']
     embed = discord.Embed(title='YouTube Search', description=f'https://www.youtube.com/watch?v={b}')
-    embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+    embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
     await ctx.send(embed=embed)
 
 
@@ -81,15 +81,15 @@ async def on_message(message):
 async def on_command_error(ctx,error):
     if isinstance(error, commands.CommandOnCooldown):
         embed = discord.Embed(title='Cooldown',description=f'Wait {round(error.retry_after)} seconds to try this command again!')
-        embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+        embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
         await ctx.send(embed=embed)
     elif isinstance(error,commands.CommandNotFound):
           embed = discord.Embed(title='Command Not Found',description=f'Not a valid command, try y!help for a list of commands!')
-          embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+          embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
           await ctx.send(embed=embed)
     elif isinstance(error,commands.MissingPermissions):
       embed = discord.Embed(title='Missing Permissions', description=f'You need {error.missing_perms} to do this!')
-      embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+      embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
       await ctx.send(embed=embed)
     else:
       pass
@@ -196,7 +196,7 @@ async def ytlive(ctx,link):
   if ctx.channel.id == bots_channel:
     if "https://" not in link:
         embed = discord.Embed(title='Invalid Link', description=f'It needs to include youtube or https://')
-        embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+        embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
         await ctx.send(embed=embed)
     elif "youtube" in link or "youtu.be" in link and len(link) > 10:
       try:
@@ -211,8 +211,7 @@ async def ytlive(ctx,link):
               embed.add_field(name="**Requested By**",value=f'||{ctx.message.author.mention}||', inline=True)
               embed.add_field(name="**Youtube Link**",value=f'||{link}||', inline=True)
               embed.add_field(name="**Time To show View**",value="2-3 min", inline=True)
-              embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
-              embed.set_footer(text='(https://discord.gg/ice-tools)',icon_url=ctx.author.avatar_url)
+              embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
               await ctx.send(embed=embed)
               for i in range(3):
                   live.append(link)
@@ -244,9 +243,9 @@ async def ytinfo(ctx, link):
         Thumbnail = f.items[0].to_dict()['snippet']['thumbnails']['default']['url']
         ViewCount = f.items[0].to_dict()['statistics']['viewCount']
         embed = discord.Embed(title='YouTube Info', description=f'Username: {Username}\nAbout Description: {aboutDescription}\nSub Count: {SubCount}\nTotal View Count: {ViewCount}',color=0xFFFAF0)
-        embed.set_footer(text='Made By ICE TOOLSFOUNDER',icon_url=ctx.author.avatar_url)
+        embed.set_footer(text='Made By Ayu',icon_url=ctx.author.avatar_url)
         embed.set_thumbnail(url=f'{Thumbnail}')
-        embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+        embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
         await ctx.send(embed=embed)
       except Exception as e:
            pass
@@ -274,8 +273,7 @@ async def ytview2(ctx,link):
       embed.add_field(name="**Requested By**",value=f'||{ctx.message.author.mention}||', inline=True)
       embed.add_field(name="**Youtube Link**",value=f'||{link}||', inline=True)
       embed.add_field(name="**Time To show View**",value="2-3 hour", inline=True)
-      embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
-      embed.set_footer(text='(https://discord.gg/ice-tools)',icon_url=ctx.author.avatar_url)
+      embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
       await ctx.send(embed=embed)
       for i in range(300):
         views.append(link)
@@ -285,7 +283,7 @@ async def ytview2(ctx,link):
 @bot.command()
 async def queues(ctx):
   embed = discord.Embed(title='Queue Length | Views & Live', description=f'View Queue Length: {len(views)}\nLive Queue Length: {len(live)}')
-  embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+  embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
   await ctx.send(embed=embed)
 
 
@@ -294,8 +292,8 @@ async def queues(ctx):
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(title='YouTube Bot', description=f' __YouTube Commands__\ny!ytview [link]\ny!ytlive [link] [BETA]\ny!ytinfo [link]\ny!ytvidinfo [link]\ny!ytsearch [keyword]\n__Miscellaneous Commands__\ny!premium [NEW!]\ny!queues',color=0xFFFAF0)
-    embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
-    embed.set_footer(text='Made By ICE TOOLSFOUNDER',icon_url=ctx.author.avatar_url)
+    embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
+    embed.set_footer(text='Made By Ayu',icon_url=ctx.author.avatar_url)
     await buttons.send(
       content=None,
       embed=embed,
@@ -305,7 +303,7 @@ async def help(ctx):
           Button(
             style = ButtonType().Link,
             label = 'Our Discord',
-            url = 'https://discord.gg/ice-tools'
+            url = 'https://discord gg/FsE9Rwqbxy'
           )
         ])
       ]
@@ -315,8 +313,8 @@ async def help(ctx):
 @commands.cooldown(1,2,BucketType.user)
 @bot.command()
 async def premium(ctx):
-    embed = discord.Embed(title='Your Own Bot', description='Want To Get One Of These? DM ICE TOOLSFOUNDER for details',color=0xFFFAF0)
-    embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
+    embed = discord.Embed(title='Your Own Bot', description='Want To Get One Of These? DM Ayu for details',color=0xFFFAF0)
+    embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
     await ctx.send(embed=embed)
 
 
@@ -413,8 +411,7 @@ async def ytview(ctx,link):
             embed.add_field(name="**Requested By**",value=f'||{ctx.message.author.mention}||', inline=True)
             embed.add_field(name="**Youtube Link**",value=f'||{link}||', inline=True)
             embed.add_field(name="**Time To show View**",value="2-3 min", inline=True)
-            embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
-            embed.set_footer(text='(https://discord.gg/ice-tools)',icon_url=ctx.author.avatar_url)
+            embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
             await buttons.send(
               content=None,
               embed=embed,
@@ -441,8 +438,7 @@ async def ytview(ctx,link):
             embed.add_field(name="**Requested By**",value=f'||{ctx.message.author.mention}||')
             embed.add_field(name="**Youtube Link**",value=f'||{link}||')
             embed.add_field(name="**Time To show View**",value="2-3 min", inline=True)
-            embed.set_image(url="https://cdn.discordapp.com/attachments/944748460509392928/961924223822077972/standard.gif")
-            embed.set_footer(text='(https://discord.gg/ice-tools)',icon_url=ctx.author.avatar_url)
+            embed.set_image(url="https://media.discordapp.net/attachments/980872597778624623/993225096384761966/standard.gif")
             await ctx.send(embed=embed)
             await buttons.send(
               content=None,
